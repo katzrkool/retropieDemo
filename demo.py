@@ -22,7 +22,7 @@ def playGame(rom):
     try:
         p.wait(60)
         print(p.returncode)
-        if p.returncode != 139:
+        if 139 not in p.returncode:
             import sys
             sys.exit()
     except subprocess.TimeoutExpired:
