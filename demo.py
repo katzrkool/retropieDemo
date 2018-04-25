@@ -14,7 +14,7 @@ def gameList():
     return games
 
 def playGame(rom):
-    subprocess.call(["fbi", "{}/logo.png".format(currentDir)])
+    subprocess.call(["fbi", "{}/logo.png".format(currentDir), "&"])
     name = rom.split("/")[-1]
     core = subprocess.Popen(["{}/search.sh".format(currentDir), name.split(".")[-1]],
                             stdout=subprocess.PIPE).stdout.read().decode("utf-8")
