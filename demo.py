@@ -14,12 +14,10 @@ def gameList():
     return games
 
 def playGame(rom):
-    subprocess.call(["fbi", "{}/logo.png".format(currentDir), "&"])
     name = rom.split("/")[-1]
     core = subprocess.Popen(["{}/search.sh".format(currentDir), name.split(".")[-1]],
                             stdout=subprocess.PIPE).stdout.read().decode("utf-8")
     core = core.replace("Binary file ", "").replace(" matches", "").strip()
-    subprocess.call(["killall", "fbi"])
     p = subprocess.Popen(["{}/run.sh".format(currentDir), core, rom])
     try:
         p.wait(60)
