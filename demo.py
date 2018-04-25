@@ -21,8 +21,7 @@ def playGame(rom):
     p = subprocess.Popen(["{}/run.sh".format(currentDir), core, rom])
     try:
         p.wait(60)
-        print(p.returncode)
-        if 139 not in p.returncode:
+        if p.returncode == 0:
             import sys
             sys.exit()
     except subprocess.TimeoutExpired:
